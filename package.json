@@ -1,0 +1,12 @@
+{
+  "name": "ugip-bot",
+  "version": "0.0.1",
+  "description": "Ugip Bot",
+  "main": "bot.js",
+  "author": "Michael Zhou",
+  "dependencies": {
+    "discord.js": "^12.2.0",
+    "eslint": "^7.4.0",
+    "prettier": "^2.0.5"
+  }
+}
