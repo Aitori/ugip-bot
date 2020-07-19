@@ -5,8 +5,14 @@
   "main": "bot.js",
   "author": "Michael Zhou",
   "dependencies": {
+    "babel-preset-env": "^1.7.0",
     "discord.js": "^12.2.0",
     "eslint": "^7.4.0",
-    "prettier": "^2.0.5"
+    "prettier": "^2.0.5",
+    "sequelize": "^6.3.3",
+    "sqlite3": "^5.0.0"
+  },
+  "scripts": {
+    "start": "babel-node bot.js"
   }
 }
