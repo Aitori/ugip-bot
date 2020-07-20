@@ -1,6 +1,8 @@
 import Discord from 'discord.js';
 
-const cooldownCheck = (cooldowns, command, message) => {
+const cooldowns = new Discord.Collection();
+
+const cooldownCheck = (command, message) => {
   // if cooldown dictionary doesn't exist
   if (!cooldowns.has(command.name)) {
     cooldowns.set(command.name, new Discord.Collection());

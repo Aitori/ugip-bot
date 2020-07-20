@@ -1,8 +1,5 @@
-module.exports = (sequelize, DataTypes, Model) => {
-  class User extends Model {}
-
-  User.init(
-    {
+const User = (sequelize, DataTypes) => sequelize.define('User', {
+    
       name: {
         type: DataTypes.STRING,
         unique: true,
@@ -13,10 +10,6 @@ module.exports = (sequelize, DataTypes, Model) => {
         defaultValue: 0,
       },
     },
-    {
-      sequelize,
-      modelName: 'User',
-    }
-  );
-  return User;
-};
+);
+
+export default User;
