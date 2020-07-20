@@ -1,9 +1,9 @@
-const User = (sequelize, DataTypes) => sequelize.define('User', {
-    
-      name: {
+const User = (sequelize, DataTypes) => sequelize.define('User', { 
+      id: {
         type: DataTypes.STRING,
         unique: true,
         allowNull: false,
+        primaryKey: true,
       },
       experience: {
         type: DataTypes.BIGINT,
