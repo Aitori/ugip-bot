@@ -8,8 +8,8 @@ import Stat from './models/stat';
 const Users = new User(sequelize, DataTypes);
 const Stats = new Stat(sequelize, DataTypes);
 
-Stats.belongsTo(Users);
+Stats.belongsTo(Users, { foreignKey: 'userId' });
 
-if(shouldSync) sequelize.sync({force: true});
+if (shouldSync) sequelize.sync({ force: true });
 
 export { Users, Stats };

@@ -2,6 +2,12 @@ const Stat = (sequelize, DataTypes) =>
   sequelize.define(
     'Stat',
     {
+      userId: {
+        type: DataTypes.STRING,
+        unique: true,
+        allowNull: false,
+        primaryKey: true,
+      },
       // necessary stats
       health: {
         type: DataTypes.INTEGER,
