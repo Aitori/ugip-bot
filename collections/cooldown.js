@@ -10,7 +10,7 @@ const checkCooldown = (command, message) => {
 
   // set up cooldown variables
   const now = Date.now();
-  const defaultCooldown = 1;
+  const defaultCooldown = 0;
   const timestamps = cooldowns.get(command.name);
   const cooldownAmount = (command.cooldown || defaultCooldown) * 1000;
 

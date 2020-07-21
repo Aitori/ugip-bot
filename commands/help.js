@@ -1,4 +1,5 @@
-const { prefix } = require('../config.json');
+import { prefix } from '../config.json';
+import commands from '../collections/commands';
 
 module.exports = {
 	name: 'help',
@@ -8,7 +9,6 @@ module.exports = {
 	cooldown: 5,
 	execute(message, args) {
 		const data = [];
-		const { commands } = message.client;
 
 		if (!args.length) {
 			data.push('Here\'s a list of all my commands:');
