@@ -3,12 +3,42 @@ const checkCommand = (command, message, args, prefix) => {
 
   // if the command is server only and is text, exit
   if (command.guildOnly && message.channel.type !== 'text') {
-    return "I can't execute that command inside DMs!";
+    return "Can't use this here...";
   }
 
-  // if args are not up to par
-  if (command.args && !args.length) {
-    let reply = `You didn't provide any arguments, ${message.author}!`;
+  // check if command is allowed to be use in channel
+  if (command.guildOnly && command.channels && command.channels.includes(message.channel.name)) {
+    return `Can't use \`${command.name}\` in this channel!`;
+  }
+
+  // check if categroy is valid
+  if (
+    command.guildOnly &&
+    command.category &&
+    command.channels.includes(message.channel.parent.name)
+  ) {
+    return `Can't use \`${command.name}\` in this category!`;
+  }
+
+  // check for validity in roles
+  if (
+    command.guildOnly &&
+    command.roles &&
+    command.roles.filter((role) => {
+      let found = false;
+      message.member.roles.cache.forEach((v) => {
+        if (v.name == role) found = true;
+      });
+      return found;
+    }) == 0
+  ) {
+    return `Can't use \`${command.name}\` no permissions!`;
+  }
+
+  // check args
+  if (command.args && command.channels) {
+    // if args are not up to par
+    let reply = `No arguments? ${message.author}`;
 
     if (command.usage) {
       reply += `\nThe proper usage would be: \`${prefix}${command.name} ${command.usage}\``;
@@ -20,4 +50,3 @@ const checkCommand = (command, message, args, prefix) => {
 };
 
 export default checkCommand;
-

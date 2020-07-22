@@ -7,8 +7,10 @@ module.exports = {
   description: 'Displays character information!',
   aliases: ['c', 'character', 'p', 'user'],
   usage: '[command]',
+  guildOnly: true,
   cooldown: 0,
   async execute(message) {
+    let user = users.get(message.author.id);
     let userStats = stats.getUserStats(message.author.id);
     // if user doesn't exist temp create a user, we change this later
     // this is temp till we make a create user
@@ -16,12 +18,13 @@ module.exports = {
       await users.addMoney(message.author.id, 10);
       await stats.setStat(message.author.id, 10, 'maxHealth');
       userStats = stats.getUserStats(message.author.id);
+      user = users.get(message.author.id);
     }
     // make embed message
     const embed = new Discord.MessageEmbed()
       .setColor('#B20000')
-      .setAuthor('RPG Ugip')
-      .setTitle(message.author.username)
+      .setAuthor('RPG Ugip                                                  Character Information!')
+      .setTitle(`${user.title}${message.author.username}`)
       .setThumbnail(message.author.displayAvatarURL({ dynamic: true }))
       .addFields(
         { name: 'Health', value: `${userStats.health}/${userStats.maxHealth}` },

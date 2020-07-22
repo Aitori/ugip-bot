@@ -17,7 +17,11 @@ const User = (sequelize, DataTypes) =>
     level: {
       type: DataTypes.INTEGER,
       defaultValue: 1,
-    }
+    },
+    title: {
+      type: DataTypes.STRING,
+      defaultValue: '',
+    },
   });
 
 export default User;

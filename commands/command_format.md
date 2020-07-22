@@ -4,6 +4,7 @@
 2. Export an object using module.exports.
 
 Follow the format of this object!
+Leave any blank if not relevant!
 
 ```
 {
@@ -11,7 +12,11 @@ Follow the format of this object!
   description: 'provide a helpful descriptoin of commands here',
   aliases: ['provide', 'several', 'aliases'];
   usage: '[provide guiders on how to use the command]',
+  roles: ['role','names'],
+  channels: ['channel','names'],
+  category: ['category', 'names'],
   cooldown: 0 provide a cooldown,
+  guildOnly: bool --> server only
   execute(parameters) {
     command function goes here
   },
