@@ -7,15 +7,15 @@ const checkCommand = (command, message, args, prefix) => {
   }
 
   // check if command is allowed to be use in channel
-  if (command.guildOnly && command.channels && command.channels.includes(message.channel.name)) {
+  if (command.guildOnly && command.channels && !command.channels.includes(message.channel.name)) {
     return `Can't use \`${command.name}\` in this channel!`;
   }
 
   // check if categroy is valid
   if (
     command.guildOnly &&
-    command.category &&
-    command.channels.includes(message.channel.parent.name)
+    command.categories &&
+    !command.categories.includes(message.channel.parent.name)
   ) {
     return `Can't use \`${command.name}\` in this category!`;
   }

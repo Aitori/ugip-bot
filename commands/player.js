@@ -7,6 +7,7 @@ module.exports = {
   description: 'Displays character information!',
   aliases: ['c', 'character', 'p', 'user'],
   usage: '[command]',
+  categories: ['test'],
   guildOnly: true,
   cooldown: 0,
   async execute(message) {
