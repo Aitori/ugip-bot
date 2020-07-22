@@ -4,7 +4,7 @@ import { Stats } from '../db_models';
 const stats = new Discord.Collection();
 
 Reflect.defineProperty(stats, 'setStat', {
-  value: async function setExperience(id, amount, statType) {
+  value: async function setStat(id, amount, statType) {
     const stat = stats.get(id);
     if (stat) {
       stat[statType] = Number(amount);
@@ -20,7 +20,7 @@ Reflect.defineProperty(stats, 'setStat', {
 });
 
 Reflect.defineProperty(stats, 'addStat', {
-  value: async function addExperience(id, amount, statType) {
+  value: async function addStat(id, amount, statType) {
     const stat = stats.get(id);
     if (stat) {
       stat[statType] += Number(amount);
@@ -55,6 +55,13 @@ Reflect.defineProperty(stats, 'getStat', {
   value: function getStat(id, statType) {
     const stat = stats.get(id);
     return stat ? stat[statType] : 0;
+  },
+});
+
+Reflect.defineProperty(stats, 'getUserStats', {
+  value: function getUserStats(id) {
+    const stat = stats.get(id);
+    return stat ? stat : null;
   },
 });
 

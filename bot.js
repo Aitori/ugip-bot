@@ -5,21 +5,23 @@ import { prefix, token } from './config.json';
 // service imports
 import checkCommand from './services/check_command';
 import checkCooldown from './collections/cooldown';
+// collection imports
+import commands from './collections/commands';
 
 import users from './collections/users';
 import stats from './collections/stats';
+import { Users, Stats } from './db_models';
 
-import { Users } from './db_models';
-import commands from './collections/commands';
 // initialize important things
 const client = new Discord.Client();
 
 // client listener for ready
 client.once('ready', async () => {
   const storedUsers = await Users.findAll();
-  storedUsers.forEach((user) => users.set(user.id, user));
-
-  console.log('Ready!');
+  const storedStats = await Stats.findAll();
+  storedUsers.forEach((e) => users.set(e.id, e));
+  storedStats.forEach((e) => stats.set(e.userId, e));
+  console.log('Ugip Ugip Lets Roll!');
 });
 
 // on message listener
