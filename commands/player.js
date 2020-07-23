@@ -7,8 +7,6 @@ module.exports = {
   description: 'Displays character information!',
   aliases: ['c', 'character', 'p', 'user'],
   usage: '[command]',
-  categories: ['test'],
-  guildOnly: true,
   cooldown: 0,
   async execute(message) {
     let user = users.get(message.author.id);
@@ -29,12 +27,19 @@ module.exports = {
       .setThumbnail(message.author.displayAvatarURL({ dynamic: true }))
       .addFields(
         { name: 'Health', value: `${userStats.health}/${userStats.maxHealth}` },
-        { name: 'Mana', value: `${userStats.mana}/${userStats.maxMana}` }
+        { name: 'Mana', value: `${userStats.mana}/${userStats.maxMana}` },
+        {
+          name: 'Class',
+          value: `${user.class.length === 0 ? 'No Class' : user.class}`,
+          inline: true,
+        },
+        { name: 'Stat Points Remaining', value: `${userStats.unspentStatPoints}`, inline: true },
+        { name: '\u200B', value: '\u200B', inline: true }
       )
       .addFields(
         { name: 'Strength', value: `${userStats.strength}`, inline: true },
         { name: 'Dexterity', value: `${userStats.dexterity}`, inline: true },
-        { name: 'Wisdom', value: `${userStats.wisdom}`, inline: true },
+        { name: 'Intelligence', value: `${userStats.intelligence}`, inline: true },
         { name: 'Agility', value: `${userStats.agility}`, inline: true },
         { name: 'Luck', value: `${userStats.luck}`, inline: true },
         { name: 'Willpower', value: `${userStats.willpower}`, inline: true }

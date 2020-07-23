@@ -11,36 +11,36 @@ const Stat = (sequelize, DataTypes) =>
       // necessary stats
       health: {
         type: DataTypes.INTEGER,
-        defaultValue: 1,
+        defaultValue: 10,
       },
       maxHealth: {
         type: DataTypes.INTEGER,
-        defaultValue: 1,
+        defaultValue: 10,
       },
       mana: {
         type: DataTypes.INTEGER,
-        defaultValue: 1,
+        defaultValue: 10,
       },
       maxMana: {
         type: DataTypes.INTEGER,
-        defaultValue: 1,
+        defaultValue: 10,
       },
       // attribute stats
       strength: {
         type: DataTypes.INTEGER,
-        defaultValue: 0,
+        defaultValue: 3,
       },
       dexterity: {
         type: DataTypes.INTEGER,
-        defaultValue: 0,
+        defaultValue: 1,
       },
-      wisdom: {
+      intelligence: {
         type: DataTypes.INTEGER,
-        defaultValue: 0,
+        defaultValue: 4,
       },
       agility: {
         type: DataTypes.INTEGER,
-        defaultValue: 0,
+        defaultValue: 2,
       },
       luck: {
         type: DataTypes.INTEGER,
@@ -48,7 +48,12 @@ const Stat = (sequelize, DataTypes) =>
       },
       willpower: {
         type: DataTypes.INTEGER,
-        defaultValue: 0,
+        defaultValue: 2,
+      },
+      // other stats cuz yeah
+      unspentStatPoints: {
+        type: DataTypes.INTEGER,
+        defaultValue: 10,
       },
     },
     { timestamps: false }
