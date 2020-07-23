@@ -15,6 +15,7 @@ Leave any blank if not relevant!
   roles: ['role','names'],
   channels: ['channel','names'],
   category: ['category', 'names'],
+  charRequired: bool --> if user has created a character
   cooldown: 0 provide a cooldown,
   guildOnly: bool --> server only
   execute(parameters) {

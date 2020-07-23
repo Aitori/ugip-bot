@@ -3,7 +3,7 @@ import stats from '../collections/stats';
 import users from '../collections/users';
 
 module.exports = {
-  name: 'createplayer',
+  name: 'createcharacter',
   description: 'Creates a player',
   aliases: ['cp', 'createp'],
   usage: '[command]',

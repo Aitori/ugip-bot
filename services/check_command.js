@@ -1,3 +1,5 @@
+import users from '../collections/users';
+
 const checkCommand = (command, message, args, prefix) => {
   if (!command) return 'Command not found!';
 
@@ -20,6 +22,12 @@ const checkCommand = (command, message, args, prefix) => {
     return `Can't use \`${command.name}\` in this category!`;
   }
 
+  if (command.charRequired) {
+    const user = users.get(message.author.id);
+    if (!user) {
+      return `You have not created a character yet! Use /createcharacter to start!`;
+    }
+  }
   // check for validity in roles
   if (
     command.guildOnly &&
@@ -36,7 +44,7 @@ const checkCommand = (command, message, args, prefix) => {
   }
 
   // check args
-  if (command.args && command.channels) {
+  if (command.args && !args.length) {
     // if args are not up to par
     let reply = `No arguments? ${message.author}`;
 

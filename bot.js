@@ -1,3 +1,4 @@
+'use strict';
 // require discord for obvious reasons
 import Discord from 'discord.js';
 // require configuration
