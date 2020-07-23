@@ -50,7 +50,7 @@ module.exports = {
       );
     let embedMsg = await message.author.send(embed);
     message.author.send(
-      'For the next minute, you can type in the stats first letter to allocate point in that stat!'
+      "For the next minute, you can type in the stats first letter to allocate point in that stat! If you go too fast, the embed won't update properly!"
     );
 
     const statAbbrev = {
@@ -66,8 +66,18 @@ module.exports = {
 
     collector.on('collect', async (m) => {
       if (m.content.length === 1 && m.content in statAbbrev && userStats.unspentStatPoints > 0) {
-        stats.addStat(message.author.id, 1, statAbbrev[m]);
-        stats.subtractStat(message.author.id, 1, 'unspentStatPoints');
+        await stats.addStat(message.author.id, 1, statAbbrev[m]);
+        await stats.subtractStat(message.author.id, 1, 'unspentStatPoints');
+        // if stat is w or i --> increase health or mana
+        if (m.content === 'w') {
+          await stats.addStat(message.author.id, 5, 'maxHealth');
+          await stats.addStat(message.author.id, 5, 'health');
+        }
+
+        if (m.content === 'i') {
+          await stats.addStat(message.author.id, 10, 'maxMana');
+          await stats.addStat(message.author.id, 10, 'mana');
+        }
       } else if (userStats.unspentStatPoints <= 0) {
         message.author.send('You no longer have any unallocated stat points!');
       }
