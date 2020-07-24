@@ -10,7 +10,7 @@ const giveExperience = async (userId, amount, message) => {
   let newExp = await users.getExperience(userId);
   let level = await users.getLevel(userId);
   // stat data
-  let userStats = await users.getUserStats(userId);
+  let userStats = await stats.getUserStats(userId);
   // non user stat data
   let cap = experience_chart[level];
   let levelUp = false;
@@ -21,7 +21,7 @@ const giveExperience = async (userId, amount, message) => {
     level += 1;
     userStats.maxHealth += 5;
     cap = experience_chart[level];
-    message.channel.send(`${message.author} has leveled up to level ${level}`);
+    message.channel.send(`${message.author.username} has leveled up to level ${level}`);
   }
 
   // update database values

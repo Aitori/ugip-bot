@@ -10,6 +10,7 @@ Leave any blank if not relevant!
 {
   name: 'insert name of command here',
   description: 'provide a helpful descriptoin of commands here',
+  args: bool --> require args
   aliases: ['provide', 'several', 'aliases'];
   usage: '[provide guiders on how to use the command]',
   roles: ['role','names'],
@@ -18,7 +19,7 @@ Leave any blank if not relevant!
   charRequired: bool --> if user has created a character
   cooldown: 0 provide a cooldown,
   guildOnly: bool --> server only
-  execute(parameters) {
+  (async) execute(parameters) {
     command function goes here
   },
 };

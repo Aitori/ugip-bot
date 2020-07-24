@@ -27,14 +27,17 @@ client.once('ready', async () => {
   await createTempMobs();
 });
 
+let counter = -1;
 // on message listener
 client.on('message', async (message) => {
   // if the message was by bot or isn't a command, exit
   if (message.author.bot) return;
-  let currChannel = message.guild.channels.cache.find((channel) => channel.name === 'mobtest');
-  if (!mobs.has(1)) {
-    mobs.spawnMob(1, currChannel);
-  }
+  if (message.channel.type !== 'dm') {
+    let currChannel = message.guild.channels.cache.find((channel) => channel.name === 'mobtest');
+    if (!mobs.has(1) && counter++ % 30 === 0) {
+      mobs.spawnMob(1, currChannel);
+    }
+  } 
   if (!message.content.startsWith(prefix)) return;
   // parse the message string
   const args = message.content.slice(prefix.length).trim().split(/ +/);

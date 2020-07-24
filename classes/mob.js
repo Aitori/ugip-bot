@@ -1,4 +1,5 @@
 import Discord from 'discord.js';
+import mobs from '../collections/mobs';
 import giveExperience from '../services/give_experience';
 // basic mob class to extend off of
 class Mob {
@@ -30,22 +31,26 @@ class Mob {
     this.intelligence = intelligence;
   }
   // Math.floor(Math.random() * (Max - Min + 1)) + Min
-  onAttacked(damage, userId, stats, users, message) {
-    const returnDamage = Math.floor(Math.random() * 2) - 2;
-    stats.subtractStat(userId, returnDamage, 'health');
+  async onAttacked(damage, userId, stats, users, message) {
     this.health -= damage;
     if (this.health <= 0) {
       this.onDeath(userId, users, message);
     } else {
-      this.displayEmbedMessage(message.channel);
+      const returnDamage = Math.floor(Math.random() * 2) + 2;
+      stats.subtractStat(userId, returnDamage, 'health');
+      await this.displayEmbedMessage(message.channel);
+      // on success return true
+      return true;
     }
   }
   // on death make
-  onDeath(userId, users, message) {
+  async onDeath(userId, users, message) {
     const giveExp = Math.floor((Math.random() * this.experience) / 10) + this.experience;
     const giveMoney = Math.floor((Math.random() * this.level) / 5) + this.level * 3;
     giveExperience(userId, giveExp, message);
     users.addMoney(userId, giveMoney);
+    message.channel.send(`${message.author.username} has defeated ${this.name}`);
+    mobs.delete(this.name);
   }
 
   displayEmbedMessage(channel) {
