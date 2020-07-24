@@ -26,7 +26,7 @@ class Mob {
     this.image = image;
     this.level = level;
     this.experience = experience;
-    this.luck = luck,
+    this.luck = luck;
     this.intelligence = intelligence;
   }
   // Math.floor(Math.random() * (Max - Min + 1)) + Min

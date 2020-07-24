@@ -11,8 +11,9 @@ import commands from './collections/commands';
 
 import users from './collections/users';
 import stats from './collections/stats';
-import { Users, Stats } from './db_models';
+import { Users, Stats, createTempMobs } from './db_models';
 
+import mobs from './collections/mobs';
 // initialize important things
 const client = new Discord.Client();
 
@@ -23,15 +24,18 @@ client.once('ready', async () => {
   storedUsers.forEach((e) => users.set(e.id, e));
   storedStats.forEach((e) => stats.set(e.userId, e));
   console.log('Ugip Ugip Lets Roll!');
+  await createTempMobs();
 });
-
 
 // on message listener
 client.on('message', async (message) => {
-  //let currChannel = message.guild.channels.cache.find((channel) => channel.name === 'mobtest');
   // if the message was by bot or isn't a command, exit
-  if (message.author.bot || !message.content.startsWith(prefix)) return;
-
+  if (message.author.bot) return;
+  let currChannel = message.guild.channels.cache.find((channel) => channel.name === 'mobtest');
+  if (!mobs.has(1)) {
+    mobs.spawnMob(1, currChannel);
+  }
+  if (!message.content.startsWith(prefix)) return;
   // parse the message string
   const args = message.content.slice(prefix.length).trim().split(/ +/);
   const commandName = args.shift().toLowerCase();

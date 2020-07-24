@@ -32,11 +32,11 @@ const Mob = (sequelize, DataTypes) =>
       },
       luck: {
         type: DataTypes.INTEGER,
-        default: 1,
+        defaultValue: 1,
       },
       intelligence: {
         type: DataTypes.INTEGER,
-        default: 1,
+        defaultValue: 1,
       },
       level: {
         type: DataTypes.INTEGER,

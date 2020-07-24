@@ -10,12 +10,13 @@ Reflect.defineProperty(mobs, 'spawnMob', {
       where: { id: mobId },
     });
 
-    // do some random stuff to health
-    const h = Math.floor((Math.random() * mobType.maxHealth) / 10) + mobType.maxHealth;
-    const s = Math.floor((Math.random() * mobType.strength) / 10) + mobType.strength;
-    const e = Math.floor((Math.random() * mobType.experience) / 10) + mobType.experience;
     //check if exist
     if (mobType) {
+      // do some random stuff to health
+      const h = Math.floor((Math.random() * mobType.maxHealth) / 10) + mobType.maxHealth;
+      const s = Math.floor((Math.random() * mobType.strength) / 10) + mobType.strength;
+      const e = Math.floor((Math.random() * mobType.experience) / 10) + mobType.experience;
+
       const newMob = new Mob({
         name: mobType.name,
         health: h,
@@ -23,17 +24,27 @@ Reflect.defineProperty(mobs, 'spawnMob', {
         strength: s,
         dexterity: mobType.dexterity,
         willpower: mobType.willpower,
+        luck: mobType.luck,
+        intelligence: mobType.intelligence,
         agility: mobType.agility,
         level: mobType.level,
         image: mobType.image,
         experience: e,
       });
-
+      // if the mob type exists already, change name to unique
+      let key = newMob.name;
+      let mobCount = 1;
+      while (mobs.has(key)) {
+        key = newMob.name.concat(mobCount++);
+      }
+      console.log(key);
+      newMob.name = key;
+      mobs.set(key, newMob);
       newMob.displayEmbedMessage(channel);
-
-      mobs.set()
-    }else{
-      console.log('Specified mob ID does not exist')
+    } else {
+      console.log('Specified mob ID does not exist');
     }
   },
 });
+
+export default mobs;
