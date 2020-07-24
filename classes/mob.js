@@ -39,8 +39,8 @@ class Mob {
       const returnDamage = Math.floor(Math.random() * 2) + 2;
       stats.subtractStat(userId, returnDamage, 'health');
       await this.displayEmbedMessage(message.channel);
+      message.channel.send(`${message.author.username} did ${damage} damage to ${this.name}. ${this.name} attack back for ${returnDamage} damage!`);
       // on success return true
-      return true;
     }
   }
   // on death make

@@ -9,6 +9,7 @@ module.exports = {
   usage: '[command mobName]',
   charRequired: true,
   guildOnly: true,
+  args: true,
   async execute(message, args) {
     const user = users.get(message.author.id);
     if(!user){
@@ -20,7 +21,7 @@ module.exports = {
       console.log("Error: User attacked without stats!");
       return;
     }
-    const mob = mobs.get(args[0]);
+    const mob = mobs.get(args[0].replace(/\s+/g, '').toLowerCase());
     if(!mob){
       console.log(`Error: mob not found!`)
       message.reply(`${args[0]} not found!`);
@@ -29,9 +30,6 @@ module.exports = {
 
     // if everything is good, then initiate attack logic
     const d = Math.floor((Math.random() * stat.strength) / 10) + stat.strength;
-    const attackSuccess = await mob.onAttacked(d, message.author.id, stats, users, message);
-    if(attackSuccess){
-      message.channel.send(`${message.author.username} did ${d} damage to ${args[0]}`);
-    }
+    await mob.onAttacked(d, message.author.id, stats, users, message);
   }
 }

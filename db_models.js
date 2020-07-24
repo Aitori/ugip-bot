@@ -15,7 +15,7 @@ Stats.belongsTo(Users, { foreignKey: 'userId' });
 // initialize a mob
 const createTempMobs = async () => {
   await Mobs.create({
-    name: 'HR',
+    name: 'HR Corp Test',
     health: 5,
     maxHealth: 5,
     experience: 20,

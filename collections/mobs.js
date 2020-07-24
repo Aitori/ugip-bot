@@ -32,13 +32,16 @@ Reflect.defineProperty(mobs, 'spawnMob', {
         experience: e,
       });
       // if the mob type exists already, change name to unique
-      let key = newMob.name;
+      let concatName = newMob.name.replace(/\s+/g, '').toLowerCase();
+      let key = concatName;
       let mobCount = 1;
       while (mobs.has(key)) {
-        key = newMob.name.concat(mobCount++);
+        key = concatName.concat(mobCount++);
       }
       console.log(key);
-      newMob.name = key;
+      if(mobCount > 1) {
+              newMob.name = newMob.name.concat(mobCount);
+      }
       mobs.set(key, newMob);
       newMob.displayEmbedMessage(channel);
     } else {
