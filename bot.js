@@ -28,7 +28,7 @@ client.once('ready', async () => {
 
 // on message listener
 client.on('message', async (message) => {
-  let currChannel = message.guild.channels.cache.find((channel) => channel.name === 'mobtest');
+  //let currChannel = message.guild.channels.cache.find((channel) => channel.name === 'mobtest');
   // if the message was by bot or isn't a command, exit
   if (message.author.bot || !message.content.startsWith(prefix)) return;
 
