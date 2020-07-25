@@ -7,17 +7,13 @@ module.exports = {
   description: 'Displays character information!',
   aliases: ['c', 'character', 'p', 'user'],
   usage: '[command]',
+  charRequired: true,
   cooldown: 0,
   async execute(message) {
     let user = users.get(message.author.id);
     let userStats = stats.getUserStats(message.author.id);
-    // if user doesn't exist temp create a user, we change this later
-    // this is temp till we make a create user
-    if (!userStats) {
-      await users.addMoney(message.author.id, 10);
-      await stats.setStat(message.author.id, 10, 'maxHealth');
-      userStats = stats.getUserStats(message.author.id);
-      user = users.get(message.author.id);
+    if (!user || !userStats) {
+      message.reply('You have not created a user yet; use `|createcharacter');
     }
     // make embed message
     const embed = new Discord.MessageEmbed()

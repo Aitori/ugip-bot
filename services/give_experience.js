@@ -30,6 +30,7 @@ const giveExperience = async (userId, amount, message) => {
     await users.setLevel(userId, level);
     await stats.setStat(userId, userStats.maxHealth, 'maxHealth');
     await stats.setStat(userId, userStats.maxHealth, 'health');
+    await stats.addStat(userId, 1, 'unspentStatPoints')
   }
 };
 

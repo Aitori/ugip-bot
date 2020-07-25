@@ -38,7 +38,6 @@ Reflect.defineProperty(mobs, 'spawnMob', {
       while (mobs.has(key)) {
         key = concatName.concat(mobCount++);
       }
-      console.log(key);
       if(mobCount > 1) {
               newMob.name = newMob.name.concat(mobCount);
       }

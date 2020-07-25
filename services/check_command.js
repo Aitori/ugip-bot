@@ -46,7 +46,7 @@ const checkCommand = (command, message, args, prefix) => {
   // check args
   if (command.args && !args.length) {
     // if args are not up to par
-    let reply = `No arguments? ${message.author}`;
+    let reply = `No arguments? ${message.author.username}`;
 
     if (command.usage) {
       reply += `\nThe proper usage would be: \`${prefix}${command.name} ${command.usage}\``;
