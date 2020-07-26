@@ -4,7 +4,7 @@ const Mob = (sequelize, DataTypes) =>
     {
       name: {
         type: DataTypes.STRING,
-        defaultName: 'Sample Mob',
+        defaultValue: 'Sample Mob',
       },
       health: {
         type: DataTypes.INTEGER,
@@ -50,6 +50,9 @@ const Mob = (sequelize, DataTypes) =>
         type: DataTypes.STRING,
         defaultValue: 1,
       },
+      ability: {
+        type: DataTypes.STRING,
+      }
     },
     { timestamps: false }
   );

@@ -30,6 +30,7 @@ Reflect.defineProperty(mobs, 'spawnMob', {
         level: mobType.level,
         image: mobType.image,
         experience: e,
+        ability: mobType.ability,
       });
       // if the mob type exists already, change name to unique
       let concatName = newMob.name.replace(/\s+/g, '').toLowerCase();
