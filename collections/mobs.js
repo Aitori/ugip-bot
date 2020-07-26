@@ -1,7 +1,7 @@
 import Discord from 'discord.js';
 import { Mobs } from '../db_models';
 import Mob from '../classes/mob';
-// this mobs will hold a collection of all mobs
+// this mobs will hold a collection of all mobs in collections of key channel
 const mobs = new Discord.Collection();
 
 Reflect.defineProperty(mobs, 'spawnMob', {
@@ -32,17 +32,23 @@ Reflect.defineProperty(mobs, 'spawnMob', {
         experience: e,
         ability: mobType.ability,
       });
+      // see if collection for that channel exists
+      if (!mobs.has(channel.name)) {
+        const newCollection = new Discord.Collection();
+        mobs.set(channel.name, newCollection);
+      }
+      const currChannelMobCollection = mobs.get(channel.name);
       // if the mob type exists already, change name to unique
       let concatName = newMob.name.replace(/\s+/g, '').toLowerCase();
       let key = concatName;
       let mobCount = 1;
-      while (mobs.has(key)) {
+      while (currChannelMobCollection.has(key)) {
         key = concatName.concat(mobCount++);
       }
-      if(mobCount > 1) {
-              newMob.name = newMob.name.concat(mobCount);
+      if (mobCount > 1) {
+        newMob.name = newMob.name.concat(mobCount);
       }
-      mobs.set(key, newMob);
+      currChannelMobCollection.set(key, newMob);
       newMob.displayEmbedMessage(channel);
     } else {
       console.log('Specified mob ID does not exist');

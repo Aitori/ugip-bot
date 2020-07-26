@@ -34,7 +34,7 @@ client.on('message', async (message) => {
   if (message.author.bot) return;
   if (message.channel.type !== 'dm') {
     let currChannel = message.guild.channels.cache.find((channel) => channel.name === 'mobtest');
-    if (!mobs.has(1) && counter++ % 30 === 0) {
+    if (!mobs.has(1) && counter++ % 2 === 0) {
       mobs.spawnMob(1, currChannel);
     }
   } 
