@@ -8,36 +8,24 @@ import checkCommand from './services/check_command';
 import checkCooldown from './collections/cooldown';
 // collection imports
 import commands from './collections/commands';
+import mobLocations from './collections/mob_locations';
+// service commands
+import basicMobSpawn from './services/basic_mob_spawn';
 
-import users from './collections/users';
-import stats from './collections/stats';
-import { Users, Stats, createTempMobs } from './db_models';
-
-import mobs from './collections/mobs';
 // initialize important things
 const client = new Discord.Client();
 
 // client listener for ready
 client.once('ready', async () => {
-  const storedUsers = await Users.findAll();
-  const storedStats = await Stats.findAll();
-  storedUsers.forEach((e) => users.set(e.id, e));
-  storedStats.forEach((e) => stats.set(e.userId, e));
+
   console.log('Ugip Ugip Lets Roll!');
-  await createTempMobs();
 });
 
-let counter = -1;
 // on message listener
 client.on('message', async (message) => {
   // if the message was by bot or isn't a command, exit
   if (message.author.bot) return;
-  if (message.channel.type !== 'dm') {
-    let currChannel = message.guild.channels.cache.find((channel) => channel.name === 'mobtest');
-    if (!mobs.has(1) && counter++ % 2 === 0) {
-      mobs.spawnMob(1, currChannel);
-    }
-  } 
+  basicMobSpawn(mobLocations, message);
   if (!message.content.startsWith(prefix)) return;
   // parse the message string
   const args = message.content.slice(prefix.length).trim().split(/ +/);

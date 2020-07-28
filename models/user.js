@@ -25,7 +25,7 @@ const User = (sequelize, DataTypes) =>
     class: {
       type: DataTypes.STRING,
       defaultValue: '',
-    }
+    },
   });
 
 export default User;

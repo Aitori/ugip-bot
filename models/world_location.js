@@ -1,16 +1,16 @@
-const MobLocation = (sequelize, DataTypes) =>
+const WorldLocation = (sequelize, DataTypes) =>
   sequelize.define(
-    'MobLocation',
+    'WorldLocation',
     {
-      location: {
+      name: {
         type: DataTypes.STRING,
         defaultValue: '',
       },
-      mobId: {
+      maxMobCount: {
         type: DataTypes.INTEGER,
         defaultValue: 0,
       },
-      chance: {
+      effectId: {
         type: DataTypes.INTEGER,
         defaultValue: 0,
       },
@@ -20,4 +20,4 @@ const MobLocation = (sequelize, DataTypes) =>
     }
   );
 
-export default MobLocation;
+export default WorldLocation;
