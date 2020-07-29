@@ -56,14 +56,4 @@ Reflect.defineProperty(mobs, 'spawnMob', {
   },
 });
 
-Reflect.defineProperty(mobs, 'deleteMob', {
-  value: async function deleteMob(mobKey) {
-    if (mobs.has(mobKey)) {
-      mobs.delete(mobKey);
-    } else {
-      console.log(`${mobKey} cannot be deleted because it does not exist.`);
-    }
-  },
-});
-
 export default mobs;

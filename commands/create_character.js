@@ -10,7 +10,7 @@ module.exports = {
   cooldown: 0,
   async execute(message) {
     let user = users.get(message.author.id);
-    let userStats = stats.getUserStats(message.author.id);
+    let userStats = stats.get(message.author.id);
     // get collection to create user
     if (!userStats) {
       // give ten money on user creation

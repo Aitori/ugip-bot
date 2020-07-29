@@ -1,5 +1,5 @@
 import Discord from 'discord.js';
-import { Stats } from '../db_models';
+import { Stats, ItemStoreShop } from '../db_models';
 
 const stats = new Discord.Collection();
 
@@ -64,5 +64,14 @@ Reflect.defineProperty(stats, 'getUserStats', {
     return stat ? stat : null;
   },
 });
+
+// equips items, can use the use stat but won't modify the stats properly
+Reflect.defineProperty(stats, 'equipItem', {
+  value: async function equipItem(itemId, userId) {
+    const itemType = await ItemStoreShop.findOne({
+      where: { id: itemId },
+    });
+  }
+})
 
 export default stats;

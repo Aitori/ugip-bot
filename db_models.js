@@ -7,16 +7,20 @@ import Stat from './models/stat';
 import Mob from './models/mob';
 import MobLocation from './models/mob_location';
 import WorldLocation from './models/world_location';
+import ItemStore from './models/item_store';
+import UserItem from './models/user_item';
 //initialize collections
 import users from './collections/users';
 import stats from './collections/stats';
 import mobLocations from './collections/mob_locations';
 
-const Users = new User(sequelize, DataTypes);
-const Stats = new Stat(sequelize, DataTypes);
-const Mobs = new Mob(sequelize, DataTypes);
-const WorldLocations = new WorldLocation(sequelize, DataTypes);
-const MobLocations = new MobLocation(sequelize, DataTypes);
+const Users = User(sequelize, DataTypes);
+const Stats = Stat(sequelize, DataTypes);
+const Mobs = Mob(sequelize, DataTypes);
+const WorldLocations = WorldLocation(sequelize, DataTypes);
+const MobLocations = MobLocation(sequelize, DataTypes);
+const ItemStoreShop = ItemStore(sequelize, DataTypes);
+const UserItems = UserItem(sequelize, DataTypes);
 
 Stats.belongsTo(Users, { foreignKey: 'userId' });
 
@@ -63,4 +67,4 @@ if (shouldSync)
     });
   });
 
-export { Users, Stats, Mobs, MobLocations, WorldLocations };
+export { Users, Stats, Mobs, MobLocations, WorldLocations, ItemStoreShop, UserItems };

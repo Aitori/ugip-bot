@@ -2,7 +2,6 @@ import mobs from '../collections/mobs';
 
 const basicMobSpawn = async (mobLocations, message) => {
   const shouldSpawn = Math.floor(Math.random() * 10);
-  console.log(shouldSpawn);
   // if get spawn then spawn
   if (shouldSpawn === 3) {
     const locationToAddMob = mobLocations.random();

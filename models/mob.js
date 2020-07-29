@@ -2,6 +2,10 @@ const Mob = (sequelize, DataTypes) =>
   sequelize.define(
     'Mob',
     {
+      id: {
+        type: DataTypes.INTEGER,
+        primaryKey: true,
+      },
       name: {
         type: DataTypes.STRING,
         defaultValue: 'Sample Mob',

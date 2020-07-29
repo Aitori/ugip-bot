@@ -55,6 +55,39 @@ const Stat = (sequelize, DataTypes) =>
         type: DataTypes.INTEGER,
         defaultValue: 10,
       },
+      // equiped items
+      headArmor: {
+        type: DataTypes.STRING,
+        defaultValue: '',
+      },
+      chestArmor: {
+        type: DataTypes.STRING,
+        defaultValue: '',
+      },
+      legArmor: {
+        type: DataTypes.STRING,
+        defaultValue: '',
+      },
+      bootArmor: {
+        type: DataTypes.STRING,
+        defaultValue: '',
+      },
+      leftRing: {
+        type: DataTypes.STRING,
+        defaultValue: '',
+      },
+      rightRing: {
+        type: DataTypes.STRING,
+        defaultValue: '',
+      },
+      leftHandWeapon: {
+        type: DataTypes.STRING,
+        defaultValue: '',
+      },
+      rightHandWeapon: {
+        type: DataTypes.STRING,
+        defaultValue: '',
+      },
     },
     { timestamps: false }
   );
