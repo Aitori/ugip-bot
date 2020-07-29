@@ -2,7 +2,7 @@ const ItemStore = (sequelize, DataTypes) =>
   sequelize.define('ItemStore', {
     name: {
       type: DataTypes.STRING,
-      defaultValue: 'Sample Mob',
+      defaultValue: 'Sample Item',
     },
     maxHealth: {
       type: DataTypes.INTEGER,
@@ -43,6 +43,10 @@ const ItemStore = (sequelize, DataTypes) =>
     slot: {
       type: DataTypes.STRING,
       defaultValue: '',
+    },
+    stackable: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
     }
   });
 
