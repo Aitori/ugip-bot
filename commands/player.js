@@ -6,7 +6,7 @@ module.exports = {
   name: 'player',
   description: 'Displays character information!',
   aliases: ['c', 'character', 'p', 'user'],
-  usage: '[command]',
+  usage: '',
   charRequired: true,
   cooldown: 0,
   async execute(message) {

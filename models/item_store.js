@@ -12,39 +12,39 @@ const ItemStore = (sequelize, DataTypes) =>
       },
       maxHealth: {
         type: DataTypes.INTEGER,
-        defaultValue: 10,
+        defaultValue: 0,
       },
       maxMana: {
         type: DataTypes.INTEGER,
-        defaultValue: 10,
+        defaultValue: 0,
       },
       strength: {
         type: DataTypes.INTEGER,
-        defaultValue: 1,
+        defaultValue: 0,
       },
       dexterity: {
         type: DataTypes.INTEGER,
-        defaultValue: 1,
+        defaultValue: 0,
       },
       willpower: {
         type: DataTypes.INTEGER,
-        defaultValue: 1,
+        defaultValue: 0,
       },
       agility: {
         type: DataTypes.INTEGER,
-        defaultValue: 1,
+        defaultValue: 0,
       },
       luck: {
         type: DataTypes.INTEGER,
-        defaultValue: 1,
+        defaultValue: 0,
       },
       intelligence: {
         type: DataTypes.INTEGER,
-        defaultValue: 1,
+        defaultValue: 0,
       },
       image: {
         type: DataTypes.STRING,
-        defaultValue: 1,
+        defaultValue: '',
       },
       effectId: {
         type: DataTypes.INTEGER,

@@ -6,7 +6,7 @@ module.exports = {
   name: 'createcharacter',
   description: 'Creates a character!',
   aliases: ['cp', 'createp'],
-  usage: '[command]',
+  usage: '',
   cooldown: 0,
   async execute(message) {
     let user = users.get(message.author.id);

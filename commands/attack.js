@@ -6,7 +6,7 @@ module.exports = {
   name: 'attack',
   description: 'Attacks a certain mob as your character!',
   aliases: ['a'],
-  usage: '[command mobName]',
+  usage: '[mobName]',
   charRequired: true,
   guildOnly: true,
   args: true,

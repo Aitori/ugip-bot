@@ -24,7 +24,7 @@ module.exports = {
   name: 'addstat',
   description: 'Uses your unspent stat points to upgrade!',
   alias: ['as', 'stat'],
-  usage: '[command statName count]',
+  usage: '[statName count]',
   args: true,
   charRequired: true,
   async execute(message, args) {

@@ -31,6 +31,7 @@ Reflect.defineProperty(mobs, 'spawnMob', {
         image: mobType.image,
         experience: e,
         ability: mobType.ability,
+        gold: mobType.gold,
       });
       // see if collection for that channel exists
       if (!mobs.has(channel.name)) {

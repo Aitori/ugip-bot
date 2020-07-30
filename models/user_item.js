@@ -3,7 +3,7 @@ const UserItem = (sequelize, DataTypes) =>
     'UserItem',
     {
       userId: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING,
         defaultValue: 0,
       },
       itemId: {

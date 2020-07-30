@@ -44,6 +44,15 @@ if (shouldSync)
         mobId: 1,
         chance: 0.3,
       }),
+      ItemStoreShop.upsert({
+        name: 'sword',
+        maxHealth: 1000,
+        slot: 'leftHandWeapon',
+      }),
+      UserItems.upsert({
+        itemId: 1,
+        userId: '135939400478490624',
+      }),
     ];
     await Promise.all(createShop);
     // after database is synced, then iniatialize, but move this somewhere else maybe?
