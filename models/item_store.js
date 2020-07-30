@@ -14,6 +14,10 @@ const ItemStore = (sequelize, DataTypes) =>
         type: DataTypes.INTEGER,
         defaultValue: 10,
       },
+      maxMana: {
+        type: DataTypes.INTEGER,
+        defaultValue: 10,
+      },
       strength: {
         type: DataTypes.INTEGER,
         defaultValue: 1,

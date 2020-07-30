@@ -50,13 +50,18 @@ const Mob = (sequelize, DataTypes) =>
         type: DataTypes.INTEGER,
         defaultValue: 0,
       },
+      gold: {
+        type: DataTypes.INTEGER,
+        defaultValue: 0,
+      },
       image: {
         type: DataTypes.STRING,
-        defaultValue: 1,
+        defaultValue: '',
       },
       ability: {
         type: DataTypes.STRING,
-      }
+        defaultValue: '',
+      },
     },
     { timestamps: false }
   );

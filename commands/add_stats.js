@@ -32,7 +32,6 @@ module.exports = {
       message.reply("Too many arguments, Ugip doesn't understand");
       return;
     }
-    console.log(args);
     // check if stat arg exists
     if (!(args[0] in statAbbrev) && !(args[1] in statAbbrev)) {
       message.reply('No argument found for a stat!');
@@ -69,14 +68,14 @@ module.exports = {
       message.reply("You don't have enough remaining stat points!");
       return;
     }
-    stats.substractStat(message.author.id, amount, 'unspentStatPoints');
-    stats.addStat(message.author.id, amount, statToBeUpgraded);
+    await stats.subtractStat(message.author.id, amount, 'unspentStatPoints');
+    await stats.addStat(message.author.id, amount, statToBeUpgraded);
     if (statToBeUpgraded === 'willpower') {
-      stats.addStat(message.author.id, 5, 'maxHealth');
+      await stats.addStat(message.author.id, 5, 'maxHealth');
     }
 
     if (statToBeUpgraded === 'intelligence') {
-      stats.addStat(message.author.id, 10, 'maxMana');
+      await stats.addStat(message.author.id, 10, 'maxMana');
     }
   },
 };
