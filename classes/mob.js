@@ -17,7 +17,6 @@ class Mob {
     level,
     experience,
     ability,
-    gold,
   } = {}) {
     this.name = name;
     this.maxHealth = maxHealth;
@@ -32,7 +31,6 @@ class Mob {
     this.luck = luck;
     this.intelligence = intelligence;
     this.ability = ability;
-    this.gold = gold;
   }
   // Math.floor(Math.random() * (Max - Min + 1)) + Min
   async onAttacked(damage, userId, stats, users, message) {
