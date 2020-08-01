@@ -1,0 +1,29 @@
+{
+  "data": [
+    {
+      "Name": "sunny-fields",
+      "MaxMobCount": 3,
+      "Effect": ""
+    },
+    {
+      "Name": "slime-town",
+      "MaxMobCount": 3,
+      "Effect": ""
+    },
+    {
+      "Name": "graveyard",
+      "MaxMobCount": 5,
+      "Effect": ""
+    },
+    {
+      "Name": "goblin-camp",
+      "MaxMobCount": 5,
+      "Effect": ""
+    },
+    {
+      "Name": "james-grave",
+      "MaxMobCount": 2,
+      "Effect": ""
+    }
+  ]
+}

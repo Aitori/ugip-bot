@@ -14,6 +14,8 @@ import users from './collections/users';
 import stats from './collections/stats';
 import mobLocations from './collections/mob_locations';
 
+import parseJsonToDatabase from './temp/parseJsonToDatabase';
+
 const Users = User(sequelize, DataTypes);
 const Stats = Stat(sequelize, DataTypes);
 const Mobs = Mob(sequelize, DataTypes);
@@ -26,35 +28,7 @@ Stats.belongsTo(Users, { foreignKey: 'userId' });
 
 if (shouldSync)
   sequelize.sync({ force: true }).then(async () => {
-    const createShop = [
-      Mobs.upsert({
-        name: 'HR Corp Test',
-        health: 5,
-        maxHealth: 5,
-        experience: 20,
-        image:
-          'https://scontent-ort2-2.xx.fbcdn.net/v/t1.0-9/37777257_1750468778342200_8518056029378838528_o.jpg?_nc_cat=109&_nc_sid=09cbfe&_nc_ohc=s5dJo4PfkqEAX9pxsMR&_nc_ht=scontent-ort2-2.xx&oh=bf9f0e9988c4102cb2583ef8e666cb31&oe=5F41ADDD',
-      }),
-      WorldLocations.upsert({
-        name: 'mobtest',
-        maxMobCount: 3,
-      }),
-      MobLocations.upsert({
-        location: 'mobtest',
-        mobId: 1,
-        chance: 0.3,
-      }),
-      ItemStoreShop.upsert({
-        name: 'sword',
-        maxHealth: 1000,
-        slot: 'leftHandWeapon',
-      }),
-      UserItems.upsert({
-        itemId: 1,
-        userId: '135939400478490624',
-      }),
-    ];
-    await Promise.all(createShop);
+    await parseJsonToDatabase(Mobs, WorldLocations, MobLocations)
     // after database is synced, then iniatialize, but move this somewhere else maybe?
     const storedUsers = await Users.findAll();
     const storedStats = await Stats.findAll();

@@ -17,11 +17,11 @@ Reflect.defineProperty(mobs, 'spawnMob', {
       const s = Math.floor((Math.random() * mobType.strength) / 10) + mobType.strength;
       const e = Math.floor((Math.random() * mobType.experience) / 10) + mobType.experience;
       const dropTable = [
-        { dropId: mobToSpawn.dropId1, chance: mobToSpawn.dropChance1 },
-        { dropId: mobToSpawn.dropId2, chance: mobToSpawn.dropChance2 },
-        { dropId: mobToSpawn.dropId3, chance: mobToSpawn.dropChance3 },
-        { dropId: mobToSpawn.dropId4, chance: mobToSpawn.dropChance4 },
-        { dropId: mobToSpawn.dropId5, chance: mobToSpawn.dropChance5 },
+        { dropId: mobToSpawn.dropId1, chance: mobToSpawn.dropChance1, count: mobToSpawn.count1 },
+        { dropId: mobToSpawn.dropId2, chance: mobToSpawn.dropChance2, count: mobToSpawn.count2 },
+        { dropId: mobToSpawn.dropId3, chance: mobToSpawn.dropChance3, count: mobToSpawn.count3 },
+        { dropId: mobToSpawn.dropId4, chance: mobToSpawn.dropChance4, count: mobToSpawn.count4 },
+        { dropId: mobToSpawn.dropId5, chance: mobToSpawn.dropChance5, count: mobToSpawn.count5 },
       ];
       const newMob = new Mob({
         name: mobType.name,
@@ -51,7 +51,7 @@ Reflect.defineProperty(mobs, 'spawnMob', {
       let key = concatName;
       let mobCount = 1;
       while (currChannelMobCollection.has(key)) {
-        key = concatName.concat(mobCount++);
+        key = concatName.concat(++mobCount);
       }
       if (mobCount > 1) {
         newMob.name = newMob.name.concat(mobCount);
@@ -59,7 +59,7 @@ Reflect.defineProperty(mobs, 'spawnMob', {
       currChannelMobCollection.set(key, newMob);
       newMob.displayEmbedMessage(channel);
     } else {
-      console.log('Specified mob ID does not exist');
+      console.log('Specified mob ID does not exist: ', mobToSpawn.mobId);
     }
   },
 });

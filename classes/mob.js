@@ -39,7 +39,7 @@ class Mob {
   }
   // Math.floor(Math.random() * (Max - Min + 1)) + Min
   async onAttacked(damage, userId, stats, users, message) {
-    this.health -= damage;
+    this.health -= damage - this.dexterity;
     if (this.health <= 0) {
       this.onDeath(userId, users, message);
     } else {

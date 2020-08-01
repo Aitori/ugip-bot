@@ -50,9 +50,9 @@ const Mob = (sequelize, DataTypes) =>
         type: DataTypes.STRING,
         defaultValue: '',
       },
-      ability: {
-        type: DataTypes.STRING,
-        defaultValue: '',
+      abilityId: {
+        type: DataTypes.INTEGER,
+        defaultValue: 0,
       },
     },
     { timestamps: false }

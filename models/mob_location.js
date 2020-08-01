@@ -34,12 +34,20 @@ const MobLocation = (sequelize, DataTypes) =>
         type: DataTypes.FLOAT,
         defaultValue: 0,
       },
+      count1: {
+        type: DataTypes.INTEGER,
+        defaultValue: 0,
+      },
       dropId2: {
         type: DataTypes.INTEGER,
         defaultValue: 0,
       },
       dropChance2: {
         type: DataTypes.FLOAT,
+        defaultValue: 0,
+      },
+      count2: {
+        type: DataTypes.INTEGER,
         defaultValue: 0,
       },
       dropId3: {
@@ -50,6 +58,10 @@ const MobLocation = (sequelize, DataTypes) =>
         type: DataTypes.FLOAT,
         defaultValue: 0,
       },
+      count3: {
+        type: DataTypes.INTEGER,
+        defaultValue: 0,
+      },
       dropId4: {
         type: DataTypes.INTEGER,
         defaultValue: 0,
@@ -58,12 +70,20 @@ const MobLocation = (sequelize, DataTypes) =>
         type: DataTypes.FLOAT,
         defaultValue: 0,
       },
+      count4: {
+        type: DataTypes.INTEGER,
+        defaultValue: 0,
+      },
       dropId5: {
         type: DataTypes.INTEGER,
         defaultValue: 0,
       },
       dropChance5: {
         type: DataTypes.FLOAT,
+        defaultValue: 0,
+      },
+      count5: {
+        type: DataTypes.INTEGER,
         defaultValue: 0,
       },
     },
