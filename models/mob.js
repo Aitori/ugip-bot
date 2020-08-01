@@ -42,10 +42,6 @@ const Mob = (sequelize, DataTypes) =>
         type: DataTypes.INTEGER,
         defaultValue: 1,
       },
-      level: {
-        type: DataTypes.INTEGER,
-        defaultValue: 1,
-      },
       experience: {
         type: DataTypes.INTEGER,
         defaultValue: 0,

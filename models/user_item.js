@@ -14,6 +14,14 @@ const UserItem = (sequelize, DataTypes) =>
         type: DataTypes.INTEGER,
         defaultValue: 1,
       },
+      rarity: {
+        type: DataTypes.INTEGER,
+        defaultValue: 0,
+      },
+      enchantLevel: {
+        type: DataTypes.INTEGER,
+        defaultValue: 0,
+      },
     },
     {
       timestamps: false,

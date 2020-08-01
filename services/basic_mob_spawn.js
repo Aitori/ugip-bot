@@ -16,7 +16,7 @@ const basicMobSpawn = async (mobLocations, message) => {
     const selector = Math.random() * sum;
     const mobToSpawn = locationToAddMob.mobs[selectionChoices.filter(el => el <= selector).length];
     const channelToSpawnIn = message.guild.channels.cache.find((channel) => channel.name === locationToAddMob.name);
-    mobs.spawnMob(mobToSpawn.mobId, channelToSpawnIn);
+    mobs.spawnMob(mobToSpawn, channelToSpawnIn);
   }
 };
 
