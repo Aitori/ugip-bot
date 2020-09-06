@@ -25,7 +25,6 @@ module.exports = {
     }
     // if the channel is not a text channel, DIE
     if(message.channel.type === 'dm'){
-      console.log("Can't create mob in a DM");
       return;
     }
     // check if mob exists in this location
@@ -36,7 +35,6 @@ module.exports = {
     }
     const mob = channel.get(args[0].replace(/\s+/g, '').toLowerCase());
     if(!mob){
-      console.log(`Error: mob not found!`)
       message.reply(`${args[0]} not found in ${message.channel.name}!`);
       return;
     }
